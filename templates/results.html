@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body { background-color: #f8f9fa; }
+        .container { margin-top: 50px; }
+        .resume-item { padding: 15px; border: 1px solid #dee2e6; border-radius: 5px; margin-bottom: 15px; background-color: #ffffff; }
+        .resume-title { font-size: 1.25rem; font-weight: bold; }
+        .resume-score { font-size: 0.9rem; color: #6c757d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Ranking Results</h1>
+        <div class="list-group">
+            {% if ranked_results %}
+                {% for resume, score in ranked_results %}
+                    <div class="resume-item">
+                        <div class="resume-title">{{ resume }}</div>
+                        <div class="resume-score">Score: {{ score|round(2) }}</div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="resume-item">
+                    <div class="resume-title">No resumes found or processed.</div>
+                </div>
+            {% endif %}
+        </div>
+        <a href="/" class="btn btn-secondary mt-3">Back</a>
+    </div>
+</body>
+</html>
